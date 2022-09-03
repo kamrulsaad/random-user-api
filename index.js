@@ -68,29 +68,30 @@ app.patch('/user/update', (req, res) => {
     res.send("Update user successful")
 })
 
-app.patch('/user/bulk-update', (req, res) => {
+// app.patch('/user/bulk-update', (req, res) => {
 
-    const reqUsers = req.body
+//     const reqUsers = req.body
 
-    let otherUsers = [];
+//     const otherUsers = []
 
-    for (const user of users) {
-        for (const reqUser of reqUsers) {
-            if (reqUser.id !== user.id) {
-                otherUsers.push()
-            }
-        }
-    }
+//     let count = 0
 
-    // if(id > users.length || !id || id<0){
-    //     return res.status(422).send("Please provide a valid user id")
-    // }
+//     for(const user of users){
+//         for(const newUser of reqUsers){
+//             if(parseInt(newUser.id) !== user.id){
+//                 otherUsers.push(user)
+//             }
+//         }
+//     }
 
-    // const otherUsers = users.filter(user => user.id !== id)
-    // const newUsers = [...otherUsers, req.body]
-    // fs.writeFileSync('users.json', JSON.stringify(newUsers))
-    res.end()
-})
+//     const newOtherUsers = otherUsers.filter((v,i,a)=>a.findIndex(v2=>(v2.id===v.id))===i)
+
+//     console.log(newOtherUsers.le)
+
+//     // console.log(newUsers.length);
+
+//     res.end()
+// })
 
 app.delete('/user/delete', (req, res) => {
     const id = parseInt(req.body.id)
@@ -100,7 +101,7 @@ app.delete('/user/delete', (req, res) => {
     }
     const otherUsers = users.filter(user => user.id !== id)
 
-    if(otherUsers.length === users.length) {
+    if (otherUsers.length === users.length) {
         return res.send("User cannot be found")
     }
     fs.writeFileSync("users.json", JSON.stringify(otherUsers))
