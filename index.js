@@ -18,28 +18,28 @@ app.get('/user/all', (req, res) => {
 })
 
 app.get('/user/random', (req, res) => {
-    const random = Math.round(Math.random()*100)
+    const random = Math.round(Math.random() * 100)
     res.send(users[random])
 })
 
 app.post('/user/save', (req, res) => {
     const newUser = req.body
 
-    const {photoUrl, name, gender, contact, address} = newUser
+    const { photoUrl, name, gender, contact, address } = newUser
 
-    if(!photoUrl){
+    if (!photoUrl) {
         return res.status(422).send("Please provide a photoUrl of the user")
     }
-    if(!name){
+    if (!name) {
         return res.status(422).send("Please provide a name of the user")
     }
-    if(!gender){
+    if (!gender) {
         return res.status(422).send("Please provide a gender of the user")
     }
-    if(!contact){
+    if (!contact) {
         return res.status(422).send("Please provide a contact info of the user")
     }
-    if(!address){
+    if (!address) {
         return res.status(422).send("Please provide a address info of the user")
     }
 
@@ -58,7 +58,7 @@ app.post('/user/save', (req, res) => {
 app.patch('/user/update', (req, res) => {
     const id = parseInt(req.body.id)
 
-    if(id > users.length || !id || id<0){
+    if (id > users.length || !id || id < 0) {
         return res.status(422).send("Please provide a valid user id")
     }
 
@@ -66,6 +66,45 @@ app.patch('/user/update', (req, res) => {
     const newUsers = [...otherUsers, req.body]
     fs.writeFileSync('users.json', JSON.stringify(newUsers))
     res.send("Update user successful")
+})
+
+app.patch('/user/bulk-update', (req, res) => {
+
+    const reqUsers = req.body
+
+    let otherUsers = [];
+
+    for (const user of users) {
+        for (const reqUser of reqUsers) {
+            if (reqUser.id !== user.id) {
+                otherUsers.push()
+            }
+        }
+    }
+
+    // if(id > users.length || !id || id<0){
+    //     return res.status(422).send("Please provide a valid user id")
+    // }
+
+    // const otherUsers = users.filter(user => user.id !== id)
+    // const newUsers = [...otherUsers, req.body]
+    // fs.writeFileSync('users.json', JSON.stringify(newUsers))
+    res.end()
+})
+
+app.delete('/user/delete', (req, res) => {
+    const id = parseInt(req.body.id)
+
+    if (!id || id < 0) {
+        return res.status(422).send("Please provide a valid user id")
+    }
+    const otherUsers = users.filter(user => user.id !== id)
+
+    if(otherUsers.length === users.length) {
+        return res.send("User cannot be found")
+    }
+    fs.writeFileSync("users.json", JSON.stringify(otherUsers))
+    res.send("User Deleted successfully")
 })
 
 app.get('/', (req, res) => {

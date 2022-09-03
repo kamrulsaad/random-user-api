@@ -30,29 +30,5 @@
         "gender": "female",
         "contact": "+1 (941) 424-3970",
         "address": "146 Belvidere Street, Westphalia, Northern Mariana Islands, 3253"
-    },
-    {
-        "photoUrl": "http://placehold.it/32x32",
-        "name": "Shaw Maynard",
-        "gender": "male",
-        "contact": "+1 (976) 503-2983",
-        "address": "681 Dover Street, Roy, Delaware, 5715",
-        "id": 6
-    },
-    {
-        "photoUrl": "http://placehold.it/32x32",
-        "name": "Shaw Maynard",
-        "gender": "Female",
-        "contact": "+1 (976) 503-2983",
-        "address": "681 Dover Street, Roy, Delaware, 5715",
-        "id": 7
-    },
-    {
-        "id": 2,
-        "photoUrl": "http://placehold.it/64x52",
-        "name": "Kamrul Saad",
-        "gender": "male",
-        "contact": "+1 (966) 554-2701",
-        "address": "1626 Sutter Avenue, Ola, Utah, 1626"
     }
 ]
