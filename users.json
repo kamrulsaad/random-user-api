@@ -8,14 +8,6 @@
         "address": "306 Glenwood Road, Norfolk, Ohio, 6882"
     },
     {
-        "id": 2,
-        "photoUrl": "http://placehold.it/32x32",
-        "name": "Mueller Rosa",
-        "gender": "male",
-        "contact": "+1 (966) 554-2701",
-        "address": "159 Sutter Avenue, Ola, Utah, 9896"
-    },
-    {
         "id": 3,
         "photoUrl": "http://placehold.it/32x32",
         "name": "Buckley Stark",
@@ -54,5 +46,13 @@
         "contact": "+1 (976) 503-2983",
         "address": "681 Dover Street, Roy, Delaware, 5715",
         "id": 7
+    },
+    {
+        "id": 2,
+        "photoUrl": "http://placehold.it/64x52",
+        "name": "Kamrul Saad",
+        "gender": "male",
+        "contact": "+1 (966) 554-2701",
+        "address": "1626 Sutter Avenue, Ola, Utah, 1626"
     }
 ]

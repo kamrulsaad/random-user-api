@@ -24,7 +24,9 @@ app.get('/user/random', (req, res) => {
 
 app.post('/user/save', (req, res) => {
     const newUser = req.body
+
     const {photoUrl, name, gender, contact, address} = newUser
+
     if(!photoUrl){
         return res.status(422).send("Please provide a photoUrl of the user")
     }
@@ -50,6 +52,20 @@ app.post('/user/save', (req, res) => {
         message: "New User Added",
         newUser
     })
+})
+
+
+app.patch('/user/update', (req, res) => {
+    const id = parseInt(req.body.id)
+
+    if(id > users.length || !id || id<0){
+        return res.status(422).send("Please provide a valid user id")
+    }
+
+    const otherUsers = users.filter(user => user.id !== id)
+    const newUsers = [...otherUsers, req.body]
+    fs.writeFileSync('users.json', JSON.stringify(newUsers))
+    res.send("Update user successful")
 })
 
 app.get('/', (req, res) => {
